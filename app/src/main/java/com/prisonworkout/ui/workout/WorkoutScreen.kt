@@ -14,6 +14,7 @@ import com.prisonworkout.data.ProgramRepository
 import com.prisonworkout.data.UserPreferences
 import com.prisonworkout.data.model.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkoutScreen(
     exerciseNameStr: String,
@@ -47,14 +48,12 @@ fun WorkoutScreen(
         ) {
             Text("Уровень ${currentLevel.levelNumber}: ${currentLevel.levelName}", style = MaterialTheme.typography.headlineSmall)
             Spacer(modifier = Modifier.height(24.dp))
-            // Большой круг с целью
             Text(
                 text = if (isTimed) "Цель: ${target} сек" else "Цель: $target",
                 fontSize = 48.sp,
                 color = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(32.dp))
-            // Поле ввода
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Button(onClick = { if (actualReps > 0) actualReps-- }) { Text("-") }
                 Text(
@@ -69,13 +68,10 @@ fun WorkoutScreen(
                 onClick = {
                     val newProgress = progress.copy(
                         actualReps = progress.actualReps + actualReps,
-                        completedCyclesToday = progress.currentCycle + 1
+                        completedCyclesToday = progress.completedCyclesToday + 1
                     )
                     prefs.saveExerciseProgress(exerciseName, newProgress)
-                    // Логика перехода на следующую ступень/уровень
-                    if (canAdvance) {
-                        // ... проверка, можно ли повысить ступень
-                    }
+                    // Здесь будет логика повышения ступени/уровня
                     navController.popBackStack()
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -83,7 +79,6 @@ fun WorkoutScreen(
                 Text("Подтвердить")
             }
             Spacer(modifier = Modifier.height(32.dp))
-            // Описание упражнения
             Text(
                 text = currentLevel.description,
                 style = MaterialTheme.typography.bodyMedium
