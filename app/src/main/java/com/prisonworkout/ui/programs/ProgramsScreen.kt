@@ -1,5 +1,6 @@
 package com.prisonworkout.ui.programs
 
+import com.prisonworkout.data.GoalType
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
