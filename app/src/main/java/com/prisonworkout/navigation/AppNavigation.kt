@@ -8,10 +8,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import androidx.navigation.navArgument
 import com.prisonworkout.data.UserPreferences
 import com.prisonworkout.ui.home.HomeScreen
 import com.prisonworkout.ui.programs.ProgramsScreen
+import com.prisonworkout.ui.programs.ProgramDetailScreen
 import com.prisonworkout.ui.statistics.StatisticsScreen
 import com.prisonworkout.ui.settings.SettingsScreen
 import com.prisonworkout.ui.workout.WorkoutScreen
